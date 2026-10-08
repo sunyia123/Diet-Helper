@@ -1,0 +1,80 @@
+/* Token migration 2026-09-10 */
+@layer pixel {
+.pixel-studio { display: grid; gap: 16px; width: 100%; max-width: 440px; margin: 0 auto; min-width: 0; }
+.pixel-studio-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pixel-size-options, .pixel-tools, .pixel-history, .icon-style-options, .pixel-library-tabs { display: flex; gap: 8px; min-width: 0; }
+.pixel-studio button:not(.primary-action), .icon-style-options button, .pixel-library-tabs button { min-width: 0; min-height: 44px; border: 1px solid var(--border, var(--muted)); border-radius: 12px; background: var(--surface, var(--surface-soft)); color: var(--ink); font: inherit; font-weight: 600; padding: 8px 12px; }
+.pixel-size-options button, .pixel-tools button, .pixel-history button, .icon-style-options button, .pixel-library-tabs button { flex: 1; }
+.pixel-studio button[aria-pressed="true"], .icon-style-options button[aria-pressed="true"], .pixel-library-tabs button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--pine); background: var(--surface-soft); color: var(--pine-dark); }
+.pixel-studio button:disabled { opacity: .4; }
+.pixel-canvas, .pixel-preview { background-color: var(--surface-soft); background-image: conic-gradient(var(--surface-soft) 25%, transparent 0 50%, var(--surface-soft) 0 75%, transparent 0); background-size: 16px 16px; image-rendering: pixelated; }
+.pixel-canvas { display: block; width: 100%; height: auto; aspect-ratio: 1; border: 1px solid var(--border, var(--muted)); border-radius: 4px; touch-action: none; cursor: crosshair; }
+.pixel-preview { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 8px; border: 1px solid var(--border, var(--muted)); }
+.pixel-studio .pixel-palette { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.pixel-studio .pixel-palette button { position: relative; padding: 3px; min-height: 32px; height: auto; aspect-ratio: 1; border-radius: 8px; }
+.pixel-palette button span { display: block; width: 100%; height: 100%; background: var(--swatch); border-radius: 4px; }
+.pixel-palette button[aria-pressed="true"]::after { content: ''; position: absolute; inset: 7px; border: 2px solid var(--surface-soft); outline: 1px solid var(--teal); border-radius: 2px; }
+.food-mini.pixel-art-icon img, .food-icon-option img.pixel-image { image-rendering: pixelated; }
+.food-icon-source-options { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.food-icon-source-options > button { min-width: 0; }
+.food-icon-picker-summary > strong { overflow-wrap: anywhere; }
+.food-icon-picker-summary input { min-width: 0; max-width: 88px; }
+.pixel-library-tabs { margin-block: 16px 12px; }
+.icon-style-settings { display: grid; gap: 12px; margin-bottom: 20px; }
+.icon-style-settings h3 { margin: 0; font-size: 18px; }
+.pixel-ui-icon { display: none; width: 24px; height: 24px; flex: 0 0 24px; }
+.pixel-ui-icon > svg { display:block; width:100%; height:100%; fill:currentColor; stroke:none; }
+body[data-icon-style="pixel"] .has-pixel-icon > svg, body[data-icon-style="pixel"] .has-pixel-icon > .classic-icon-text { display: none !important; }
+body[data-icon-style="pixel"] .has-pixel-icon > .pixel-ui-icon { display: inline-block; }
+@media (max-width: 359px) { .pixel-tools button { padding-inline: 4px; font-size: 14px; } .pixel-studio { gap: 12px; } .pixel-studio .pixel-palette { gap: 4px; } .pixel-studio .pixel-palette button { min-height: 28px; } }
+
+/* Compact controls share the page spacing and never extend beyond their cards. */
+#pixel-header-save { margin-left:auto; border:0; border-radius:12px; padding:10px 16px; min-height:44px; background:var(--pine); color: var(--on-accent); font:inherit; font-weight:700; }
+#pixel-header-save:disabled { opacity:.45; }
+#bottom-sheet[data-editor="pixel-art"] .editor-page-header { grid-template-columns:40px minmax(0,1fr) auto; }
+#pixel-header-save { white-space:nowrap; }
+#pixel-header-save[hidden] { display:none; }
+.editor-page-header > div { min-width:0; }
+[data-editor="pixel-art"] .pixel-studio { gap:12px; max-width:min(100%, 380px); }
+.pixel-tools { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:4px; }
+.pixel-studio .pixel-tools button { display:grid; place-items:center; padding:6px; min-height:40px; }
+.pixel-tools svg { width:24px; height:24px; }
+.pixel-studio .pixel-canvas { width:min(100%, max(180px, calc(100dvh - 328px))); justify-self:center; }
+.food-icon-picker-summary { display:flex !important; flex-wrap:nowrap !important; align-items:center; gap:12px; }
+.food-icon-picker-summary > strong { flex:1; min-width:0; }
+.food-icon-picker-summary #food-icon-text { width:76px; max-width:76px; flex:0 0 76px; margin:0; }
+.food-icon-picker-summary #food-icon-text[hidden] { display:none; }
+.food-mini.pixel-art-icon img { object-fit:contain; width:90%; height:90%; }
+.food-icon-option img.pixel-image { object-fit:contain; }
+.prep-date-edit { display:flex; align-items:center; gap:8px; position:relative; cursor:pointer; white-space:nowrap; }
+.prep-date-edit > span { flex:none; font-size:12px; }
+.prep-date-edit > strong { font-size:clamp(14px,4vw,20px); }
+.prep-date-edit > input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; }
+.prep-date-edit input::-webkit-calendar-picker-indicator { position:absolute; inset:0; width:100%; height:100%; cursor:pointer; }
+#prep-summary .prep-days-edit { display:grid; justify-items:center; gap:6px; min-width:0; border-right:1px solid var(--surface-soft-a15); }
+#prep-summary .prep-days-edit input { appearance:textfield; width:100%; max-width:84px; min-height:32px; padding:0; border:0; background:transparent; color:inherit; font:inherit; font-size:24px; font-weight:700; text-align:center; border-radius:6px; }
+#prep-summary input::-webkit-inner-spin-button { appearance:none; }
+#prep-summary .prep-days-edit > span { font-size:12px; opacity:.7; }
+.daily-set-meals .food-mini.compact { width:24px; height:24px; min-width:24px; flex-basis:24px; }
+.daily-set-meals .food-mini.compact img { width:22px; height:22px; }
+.shopping-item .food-mini.compact { width:36px; height:36px; min-width:36px; }
+.shopping-item { grid-template-columns:22px 36px minmax(0,1fr) auto; gap:12px; }
+.daily-set-carousel { grid-auto-columns:minmax(288px, 1fr); }
+.daily-set-meals i { flex-wrap:nowrap; }
+.daily-set-meals > span { grid-template-columns:36px minmax(0,1fr); gap:6px; }
+.prep-date-edit > strong { margin-top:0; }
+#prep-summary .prep-days-edit { border-right:0; gap:0; }
+.scroll-to-top { position:fixed; right:max(18px,calc((100vw - 480px)/2 + 18px)); bottom:calc(90px + var(--page-safe-bottom)); z-index:85; display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--border); border-radius:50%; background:var(--surface,var(--surface-soft)); color:var(--pine); box-shadow:0 3px 12px var(--ink-a09); }
+.scroll-to-top[hidden] { display:none; }
+.scroll-to-top svg { width:24px; height:24px; }
+.unsaved-edit-overlay { position:fixed; inset:0; z-index:400; display:grid; place-items:center; padding:20px; background:var(--ink-a40); }
+.unsaved-edit-dialog { width:min(100%,380px); box-sizing:border-box; padding:24px; border-radius:24px; background:var(--paper); color:var(--ink); box-shadow:0 12px 40px var(--ink-a13); display:grid; gap:12px; }
+.unsaved-edit-dialog h2 { margin:0; font-size:21px; }
+.unsaved-edit-dialog p { margin:0 0 4px; font-size:15px; color:var(--muted); }
+.unsaved-edit-dialog button { min-height:46px; border:1px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); font:inherit; font-weight:600; }
+.unsaved-edit-dialog [data-unsaved-save] { color: var(--on-accent); background:var(--pine); border-color:var(--pine); }
+.unsaved-edit-dialog [data-unsaved-discard] { color:var(--clay); }
+.date-row { justify-content:space-between; min-height:34px; }
+.summary-date-button { position:relative; z-index:3; display:block; padding:0 0 8px; margin:0; border:0; background:transparent; color:var(--muted); font:inherit; font-size:14px; line-height:1.4; text-align:left; cursor:pointer; }
+.summary-date-button #current-weekday { white-space:nowrap; font-size:14px; margin:0; }
+}

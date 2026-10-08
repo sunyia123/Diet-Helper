@@ -1,0 +1,672 @@
+{
+  "source": "https://github.com/jdecked/twemoji",
+  "version": "v16.0.1",
+  "license": "CC-BY-4.0",
+  "attribution": "Twemoji graphics by Twitter, Inc. and other contributors. Maintained by jdecked/twemoji. Some historical aliases share a representative icon.",
+  "icons": [
+    {
+      "id": "1f32d",
+      "resolved": "1f32d"
+    },
+    {
+      "id": "1f32e",
+      "resolved": "1f32e"
+    },
+    {
+      "id": "1f32f",
+      "resolved": "1f32f"
+    },
+    {
+      "id": "1f330",
+      "resolved": "1f330"
+    },
+    {
+      "id": "1f336",
+      "resolved": "1f336"
+    },
+    {
+      "id": "1f33d",
+      "resolved": "1f33d"
+    },
+    {
+      "id": "1f33e",
+      "resolved": "1f33e"
+    },
+    {
+      "id": "1f344",
+      "resolved": "1f344"
+    },
+    {
+      "id": "1f344-200d-1f7eb",
+      "resolved": "1f344-200d-1f7eb"
+    },
+    {
+      "id": "1f345",
+      "resolved": "1f345"
+    },
+    {
+      "id": "1f346",
+      "resolved": "1f346"
+    },
+    {
+      "id": "1f347",
+      "resolved": "1f347"
+    },
+    {
+      "id": "1f348",
+      "resolved": "1f348"
+    },
+    {
+      "id": "1f349",
+      "resolved": "1f349"
+    },
+    {
+      "id": "1f34a",
+      "resolved": "1f34a"
+    },
+    {
+      "id": "1f34b",
+      "resolved": "1f34b"
+    },
+    {
+      "id": "1f34b-200d-1f7e9",
+      "resolved": "1f34b-200d-1f7e9"
+    },
+    {
+      "id": "1f34c",
+      "resolved": "1f34c"
+    },
+    {
+      "id": "1f34d",
+      "resolved": "1f34d"
+    },
+    {
+      "id": "1f34e",
+      "resolved": "1f34e"
+    },
+    {
+      "id": "1f34f",
+      "resolved": "1f34f"
+    },
+    {
+      "id": "1f350",
+      "resolved": "1f350"
+    },
+    {
+      "id": "1f351",
+      "resolved": "1f351"
+    },
+    {
+      "id": "1f352",
+      "resolved": "1f352"
+    },
+    {
+      "id": "1f353",
+      "resolved": "1f353"
+    },
+    {
+      "id": "1f354",
+      "resolved": "1f354"
+    },
+    {
+      "id": "1f355",
+      "resolved": "1f355"
+    },
+    {
+      "id": "1f356",
+      "resolved": "1f356"
+    },
+    {
+      "id": "1f357",
+      "resolved": "1f357"
+    },
+    {
+      "id": "1f358",
+      "resolved": "1f358"
+    },
+    {
+      "id": "1f359",
+      "resolved": "1f359"
+    },
+    {
+      "id": "1f35a",
+      "resolved": "1f35a"
+    },
+    {
+      "id": "1f35b",
+      "resolved": "1f35b"
+    },
+    {
+      "id": "1f35c",
+      "resolved": "1f35c"
+    },
+    {
+      "id": "1f35d",
+      "resolved": "1f35d"
+    },
+    {
+      "id": "1f35e",
+      "resolved": "1f35e"
+    },
+    {
+      "id": "1f35f",
+      "resolved": "1f35f"
+    },
+    {
+      "id": "1f360",
+      "resolved": "1f360"
+    },
+    {
+      "id": "1f361",
+      "resolved": "1f361"
+    },
+    {
+      "id": "1f362",
+      "resolved": "1f362"
+    },
+    {
+      "id": "1f363",
+      "resolved": "1f363"
+    },
+    {
+      "id": "1f364",
+      "resolved": "1f364"
+    },
+    {
+      "id": "1f365",
+      "resolved": "1f365"
+    },
+    {
+      "id": "1f366",
+      "resolved": "1f366"
+    },
+    {
+      "id": "1f367",
+      "resolved": "1f367"
+    },
+    {
+      "id": "1f368",
+      "resolved": "1f368"
+    },
+    {
+      "id": "1f369",
+      "resolved": "1f369"
+    },
+    {
+      "id": "1f36a",
+      "resolved": "1f36a"
+    },
+    {
+      "id": "1f36b",
+      "resolved": "1f36b"
+    },
+    {
+      "id": "1f36c",
+      "resolved": "1f36c"
+    },
+    {
+      "id": "1f36d",
+      "resolved": "1f36d"
+    },
+    {
+      "id": "1f36e",
+      "resolved": "1f36e"
+    },
+    {
+      "id": "1f36f",
+      "resolved": "1f36f"
+    },
+    {
+      "id": "1f370",
+      "resolved": "1f370"
+    },
+    {
+      "id": "1f371",
+      "resolved": "1f371"
+    },
+    {
+      "id": "1f372",
+      "resolved": "1f372"
+    },
+    {
+      "id": "1f373",
+      "resolved": "1f373"
+    },
+    {
+      "id": "1f374",
+      "resolved": "1f374"
+    },
+    {
+      "id": "1f375",
+      "resolved": "1f375"
+    },
+    {
+      "id": "1f376",
+      "resolved": "1f376"
+    },
+    {
+      "id": "1f377",
+      "resolved": "1f377"
+    },
+    {
+      "id": "1f378",
+      "resolved": "1f378"
+    },
+    {
+      "id": "1f379",
+      "resolved": "1f379"
+    },
+    {
+      "id": "1f37a",
+      "resolved": "1f37a"
+    },
+    {
+      "id": "1f37b",
+      "resolved": "1f37b"
+    },
+    {
+      "id": "1f37c",
+      "resolved": "1f37c"
+    },
+    {
+      "id": "1f37d",
+      "resolved": "1f37d"
+    },
+    {
+      "id": "1f37e",
+      "resolved": "1f37e"
+    },
+    {
+      "id": "1f37f",
+      "resolved": "1f37f"
+    },
+    {
+      "id": "1f382",
+      "resolved": "1f382"
+    },
+    {
+      "id": "1f383",
+      "resolved": "1f383"
+    },
+    {
+      "id": "1f3fa",
+      "resolved": "1f3fa"
+    },
+    {
+      "id": "1f404",
+      "resolved": "1f404"
+    },
+    {
+      "id": "1f411",
+      "resolved": "1f411"
+    },
+    {
+      "id": "1f414",
+      "resolved": "1f414"
+    },
+    {
+      "id": "1f416",
+      "resolved": "1f416"
+    },
+    {
+      "id": "1f41f",
+      "resolved": "1f41f"
+    },
+    {
+      "id": "1f4a7",
+      "resolved": "1f4a7"
+    },
+    {
+      "id": "1f52a",
+      "resolved": "1f52a"
+    },
+    {
+      "id": "1f942",
+      "resolved": "1f942"
+    },
+    {
+      "id": "1f943",
+      "resolved": "1f943"
+    },
+    {
+      "id": "1f944",
+      "resolved": "1f944"
+    },
+    {
+      "id": "1f950",
+      "resolved": "1f950"
+    },
+    {
+      "id": "1f951",
+      "resolved": "1f951"
+    },
+    {
+      "id": "1f952",
+      "resolved": "1f952"
+    },
+    {
+      "id": "1f953",
+      "resolved": "1f953"
+    },
+    {
+      "id": "1f954",
+      "resolved": "1f954"
+    },
+    {
+      "id": "1f955",
+      "resolved": "1f955"
+    },
+    {
+      "id": "1f956",
+      "resolved": "1f956"
+    },
+    {
+      "id": "1f957",
+      "resolved": "1f957"
+    },
+    {
+      "id": "1f958",
+      "resolved": "1f958"
+    },
+    {
+      "id": "1f959",
+      "resolved": "1f959"
+    },
+    {
+      "id": "1f95a",
+      "resolved": "1f95a"
+    },
+    {
+      "id": "1f95b",
+      "resolved": "1f95b"
+    },
+    {
+      "id": "1f95c",
+      "resolved": "1f95c"
+    },
+    {
+      "id": "1f95d",
+      "resolved": "1f95d"
+    },
+    {
+      "id": "1f95e",
+      "resolved": "1f95e"
+    },
+    {
+      "id": "1f95f",
+      "resolved": "1f95f"
+    },
+    {
+      "id": "1f960",
+      "resolved": "1f960"
+    },
+    {
+      "id": "1f961",
+      "resolved": "1f961"
+    },
+    {
+      "id": "1f962",
+      "resolved": "1f962"
+    },
+    {
+      "id": "1f963",
+      "resolved": "1f963"
+    },
+    {
+      "id": "1f964",
+      "resolved": "1f964"
+    },
+    {
+      "id": "1f965",
+      "resolved": "1f965"
+    },
+    {
+      "id": "1f966",
+      "resolved": "1f966"
+    },
+    {
+      "id": "1f967",
+      "resolved": "1f967"
+    },
+    {
+      "id": "1f968",
+      "resolved": "1f968"
+    },
+    {
+      "id": "1f969",
+      "resolved": "1f969"
+    },
+    {
+      "id": "1f96a",
+      "resolved": "1f96a"
+    },
+    {
+      "id": "1f96b",
+      "resolved": "1f96b"
+    },
+    {
+      "id": "1f96c",
+      "resolved": "1f96c"
+    },
+    {
+      "id": "1f96d",
+      "resolved": "1f96d"
+    },
+    {
+      "id": "1f96e",
+      "resolved": "1f96e"
+    },
+    {
+      "id": "1f96f",
+      "resolved": "1f96f"
+    },
+    {
+      "id": "1f980",
+      "resolved": "1f980"
+    },
+    {
+      "id": "1f986",
+      "resolved": "1f986"
+    },
+    {
+      "id": "1f990",
+      "resolved": "1f990"
+    },
+    {
+      "id": "1f991",
+      "resolved": "1f991"
+    },
+    {
+      "id": "1f99e",
+      "resolved": "1f99e"
+    },
+    {
+      "id": "1f9aa",
+      "resolved": "1f9aa"
+    },
+    {
+      "id": "1f9c0",
+      "resolved": "1f9c0"
+    },
+    {
+      "id": "1f9c1",
+      "resolved": "1f9c1"
+    },
+    {
+      "id": "1f9c2",
+      "resolved": "1f9c2"
+    },
+    {
+      "id": "1f9c3",
+      "resolved": "1f9c3"
+    },
+    {
+      "id": "1f9c4",
+      "resolved": "1f9c4"
+    },
+    {
+      "id": "1f9c5",
+      "resolved": "1f9c5"
+    },
+    {
+      "id": "1f9c6",
+      "resolved": "1f9c6"
+    },
+    {
+      "id": "1f9c7",
+      "resolved": "1f9c7"
+    },
+    {
+      "id": "1f9c8",
+      "resolved": "1f9c8"
+    },
+    {
+      "id": "1f9c9",
+      "resolved": "1f9c9"
+    },
+    {
+      "id": "1f9ca",
+      "resolved": "1f9ca"
+    },
+    {
+      "id": "1f9cb",
+      "resolved": "1f9cb"
+    },
+    {
+      "id": "1fad0",
+      "resolved": "1fad0"
+    },
+    {
+      "id": "1fad1",
+      "resolved": "1fad1"
+    },
+    {
+      "id": "1fad2",
+      "resolved": "1fad2"
+    },
+    {
+      "id": "1fad3",
+      "resolved": "1fad3"
+    },
+    {
+      "id": "1fad4",
+      "resolved": "1fad4"
+    },
+    {
+      "id": "1fad5",
+      "resolved": "1fad5"
+    },
+    {
+      "id": "1fad6",
+      "resolved": "1fad6"
+    },
+    {
+      "id": "1fad7",
+      "resolved": "1fad7"
+    },
+    {
+      "id": "1fad8",
+      "resolved": "1fad8"
+    },
+    {
+      "id": "1fad9",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7e5",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7e6",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7e7",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7e8",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7e9",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7ea",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fad9-200d-1f7eb",
+      "resolved": "1fad9"
+    },
+    {
+      "id": "1fada",
+      "resolved": "1fada"
+    },
+    {
+      "id": "1fadb",
+      "resolved": "1fadb"
+    },
+    {
+      "id": "1fadc",
+      "resolved": "1f955"
+    },
+    {
+      "id": "2615",
+      "resolved": "2615"
+    },
+    {
+      "id": "e0c0",
+      "resolved": "1f34a"
+    },
+    {
+      "id": "e0c1",
+      "resolved": "1f95f"
+    },
+    {
+      "id": "e0c2",
+      "resolved": "1f35c"
+    },
+    {
+      "id": "e0c3",
+      "resolved": "1f968"
+    },
+    {
+      "id": "e0c4",
+      "resolved": "1f34e"
+    },
+    {
+      "id": "e0c5",
+      "resolved": "2615"
+    },
+    {
+      "id": "e0c6",
+      "resolved": "2615"
+    },
+    {
+      "id": "e0c7",
+      "resolved": "1f950"
+    },
+    {
+      "id": "e0c8",
+      "resolved": "1f344"
+    },
+    {
+      "id": "e0c9",
+      "resolved": "1f344"
+    },
+    {
+      "id": "e0ca",
+      "resolved": "1f35e"
+    },
+    {
+      "id": "e0cb",
+      "resolved": "1f37c"
+    },
+    {
+      "id": "e0cc",
+      "resolved": "1f964"
+    }
+  ]
+}

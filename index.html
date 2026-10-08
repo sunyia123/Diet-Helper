@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="食由己 2.4：面向 HarmonyOS 的本地优先饮食管理产品。查看真实界面、主要功能与 WebView 历史工程。">
+  <title>食由己 · 产品设计与 WebView 工程留档</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="showcase.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="食由己，返回页首">食由己<span class="wordmark-dot">.</span></a>
+    <a class="header-link" href="design-demo/calm-path-v1/index.html">体验 Web 版 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="status">HarmonyOS · 2.4 WebView 留档</p>
+        <h1 id="hero-title">今天吃什么，<br>下一餐怎么备。</h1>
+        <p class="lede">从营养目标、逐餐记录到备餐采购和体重复盘，食由己把饮食管理放在同一条日常流程里。无需账号，记录留在本机。</p>
+        <div class="hero-actions">
+          <a class="action-primary" href="design-demo/calm-path-v1/index.html">打开交互演示 <span aria-hidden="true">↗</span></a>
+          <a class="action-text" href="#product">查看产品设计 <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="showcase/screenshots/01-today-1080x1920.png" alt="食由己今日页：营养目标、训练日选择及按餐记录" width="1080" height="1920" fetchpriority="high">
+        <figcaption>一天的目标和四餐记录，放在同一屏。</figcaption>
+      </figure>
+    </section>
+
+    <section class="intro" id="product" aria-labelledby="product-title">
+      <h2 id="product-title">从记录一餐，到安排下一餐。</h2>
+      <p>这不是食物热量表的堆叠。食物克重会影响当天营养目标；备餐和采购记录会回到成本与用量；趋势和复盘再帮助调整下一阶段。每个界面都尽量保留直接操作的入口。</p>
+    </section>
+
+    <section class="workbench" aria-label="产品功能导览">
+      <article class="feature feature-food">
+        <div class="feature-copy">
+          <h3>查食物，处理生熟与可食重量。</h3>
+          <p>食材和菜肴集中检索，支持拼音、分类与收藏。食材可记录购买量、去除不可食部分后的重量和熟重，已记录的换算规则可复用到记餐与备餐。</p>
+          <p class="feature-note">食物库 · 生熟切换 · 克重换算</p>
+        </div>
+        <figure><img src="showcase/screenshots/02-foods-1080x1920.png" alt="食物库的搜索、分类与生熟切换界面" width="1080" height="1920" loading="lazy"><figcaption>食物资料和日常记录相互关联。</figcaption></figure>
+      </article>
+
+      <article class="feature feature-prep">
+        <div class="feature-copy">
+          <h3>把套餐变成可执行的备餐清单。</h3>
+          <p>按周期安排餐食后，可在菜肴与原材料视图间切换，汇总计划用量、采购情况与估算费用。缺少价格记录时保留提示，不把未知成本当作零。</p>
+          <p class="feature-note">周期套餐 · 原料视图 · 成本估算</p>
+        </div>
+        <figure><img src="showcase/screenshots/03-prep-1080x1920.png" alt="备餐清单展示周期原料、计划用量与费用" width="1080" height="1920" loading="lazy"><figcaption>采购量与计划用量并排核对。</figcaption></figure>
+      </article>
+
+      <article class="feature feature-trends">
+        <div class="feature-copy">
+          <h3>用趋势和月历看见变化。</h3>
+          <p>热量、碳水、蛋白质、脂肪与饮食花费按时间查看；点选图表可读具体数值。月历把记录分布铺开，让空白日和已完成日都清楚可见。</p>
+          <p class="feature-note">趋势图 · 营养月历 · 体重复盘</p>
+        </div>
+        <div class="feature-pair">
+          <figure><img src="showcase/screenshots/04-insights-1080x1920.png" alt="营养与花费趋势图" width="1080" height="1920" loading="lazy"><figcaption>趋势：从单日走到一段时间。</figcaption></figure>
+          <figure><img src="showcase/screenshots/05-calendar-1080x1920.png" alt="每日营养记录月历" width="1080" height="1920" loading="lazy"><figcaption>月历：回看哪天吃了什么。</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="feature feature-plan">
+        <div class="feature-copy">
+          <h3>目标可计算，也可直接编辑。</h3>
+          <p>基础代谢、活动系数与热量缺口形成建议目标；训练日与休息日可分别设热量和碳蛋脂比例。体重记录进入复盘时，调整仍由使用者确认。</p>
+          <p class="feature-note">热量缺口法 · 分日目标 · 人工确认</p>
+        </div>
+        <figure><img src="showcase/screenshots/06-deficit-1080x1920.png" alt="训练日和休息日可分别调整热量与营养比例" width="1080" height="1920" loading="lazy"><figcaption>同一种方法，也允许不同的日目标。</figcaption></figure>
+      </article>
+
+      <article class="feature feature-purchase">
+        <div class="feature-copy">
+          <h3>购买记录为下一次采购提供依据。</h3>
+          <p>每笔记录包含食物、渠道、重量和实付；同一种食物可比较整体均价、最便宜渠道均价与最便宜单次采购。成本按吃掉的食物克重折算。</p>
+          <p class="feature-note">采购渠道 · 历史均价 · 饮食成本</p>
+        </div>
+        <figure><img src="showcase/screenshots/07-purchase-1080x1920.png" alt="食物采购记录与渠道比价界面" width="1080" height="1920" loading="lazy"><figcaption>价格与食物资料放在同一条记录链。</figcaption></figure>
+      </article>
+    </section>
+
+    <section class="implementation" id="source" aria-labelledby="source-title">
+      <div>
+        <h2 id="source-title">一个可运行的历史版本。</h2>
+        <p>前端由 HTML、CSS 和 JavaScript 构成；HarmonyOS 工程以 ArkTS WebView 加载本地 rawfile，并桥接窗口避让、数据传输、体重接口和桌面营养卡片。饮食记录主要保存在本地，餐食照片存于 IndexedDB。</p>
+        <p>本仓库保留 2.4 WebView 实现和演示页面。新的 ArkUI／ArkTS 重构在原项目继续，旧版不会被覆盖成一份无法运行的混合代码。</p>
+      </div>
+      <div class="source-links">
+        <a href="https://github.com/sunyia123/Diet-Helper-WebView-Archive#readme">阅读运行说明 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/sunyia123/Diet-Helper-WebView-Archive">浏览归档源码 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>食由己 · 2.4 WebView 历史版本</span>
+    <span>截图为隔离浏览器中的演示记录，非真机截屏。</span>
+  </footer>
+</body>
+</html>

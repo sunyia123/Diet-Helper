@@ -1,0 +1,43 @@
+@layer screens {
+  .weight-conversion { margin-block:8px; border-block:1px solid var(--line); }
+  .weight-conversion > summary, .weight-stock-detail > summary { min-height:44px; padding:10px 0; cursor:pointer; color:var(--pine); font-weight:650; font-size:14px; }
+  .weight-conversion > summary span { font-size:12px; color:var(--muted); font-weight:400; margin-left:6px; }
+  .weight-conversion-body { display:grid; gap:8px; padding-bottom:10px; }
+  .weight-conversion [data-weight-fields] { display:grid; gap:8px; }
+  .weight-conversion [hidden] { display:none!important; }
+  .weight-conversion .form-field { margin:0; min-width:0; }
+  .weight-conversion .form-field > span { font-size:12px; }
+  .weight-conversion input:not([type="checkbox"]), .weight-conversion select { min-width:0; width:100%; height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit; font-size:14px; }
+  .weight-measurements { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+  .weight-measurements:has([hidden]) { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .weight-save-rule { display:flex; align-items:center; gap:8px; min-height:44px; font-size:13px; }
+  .weight-save-rule input { width:18px; height:18px; accent-color:var(--pine); }
+  .weight-note, .weight-preview, .weight-stock-detail p, .weight-stock-detail small { margin:0; color:var(--muted); font-size:12px; line-height:1.6; overflow-wrap:anywhere; }
+  .weight-preview { color:var(--pine); font-variant-numeric:tabular-nums; }
+  .weight-stock-detail { border-top:1px solid var(--line); margin-top:12px; }
+  .food-weight-detail { display:grid; gap:8px; }
+  .food-stage-mini { flex:none; min-width:40px; min-height:40px; border:0; border-radius:9px; background:var(--soft, #f5f8f6); color:var(--pine); font:inherit; font-size:12px; font-weight:700; cursor:pointer; }
+  .compact-meal-item > span:not(.food-mini) { position:relative; }
+  .compact-meal-item > span > strong { padding-right:43px; }
+  .compact-meal-item > span > .food-stage-mini { position:absolute; right:0; top:0; }
+  .meal-set-page .meal-item-edit-row > span > strong { padding-right:42px; }
+  .meal-set-page .meal-item-edit-row > span > .food-stage-mini { grid-area:1 / 2; justify-self:end; z-index:1; }
+  .weight-pair-panel, .weight-pair-measure { display:grid; gap:8px; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+  .food-edit-conversion { margin:10px 0; padding:0 12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+  .food-edit-conversion > summary { min-height:48px; display:flex; align-items:center; color:var(--pine); font-weight:700; cursor:pointer; }
+  .food-edit-conversion-body { display:grid; gap:10px; padding:0 0 12px; }
+  .food-edit-conversion-body > .sheet-hint { margin:0; }
+  .food-edit-conversion-body select { min-width:0; width:100%; }
+  .food-edit-samples { display:grid; gap:4px; padding:8px 2px; color:var(--muted); font-size:12px; }
+  .weight-pair-fields, .weight-pair-measure .weight-measurements { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .weight-pair-panel .form-field, .weight-pair-measure .form-field { margin:0; min-width:0; }
+  .weight-pair-panel select, .weight-pair-measure input { min-width:0; width:100%; height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit; }
+  .weight-pair-summary { display:grid; gap:3px; padding:10px 2px; font-variant-numeric:tabular-nums; }
+  .weight-pair-summary small, .weight-pair-measure > details, .weight-pair-measure .form-field > span { color:var(--muted); font-size:12px; }
+  .weight-pair-measure > details summary { min-height:44px; display:flex; align-items:center; cursor:pointer; color:var(--pine); }
+  .weight-pair-measure > details .form-field { display:grid; gap:5px; }
+  @media (max-width:360px) { .weight-pair-fields { grid-template-columns:1fr; } }
+  button.shopping-required { border:0; background:none; padding:0; min-height:44px; font:inherit; font-weight:700; text-align:right; color:var(--ink); }
+  .meal-weight-link { display:block; border:0; background:none; color:var(--pine); padding:8px 0; min-height:44px; font:inherit; font-size:12px; text-align:left; }
+  .weight-record-note { display:block; font-size:11px; color:var(--muted); line-height:1.5; }
+}

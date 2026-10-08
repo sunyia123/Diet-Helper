@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "本地优先的饮食计划与营养记录" },
+    { "name": "EntryAbility_desc", "value": "食由己主界面" },
+    { "name": "EntryAbility_label", "value": "食由己" },
+    { "name": "DailyNutritionCard_display_name", "value": "每日营养记餐" },
+    { "name": "DailyNutritionCard_desc", "value": "查看今日营养摄入并快速记录餐次" }
+  ]
+}

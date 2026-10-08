@@ -1,0 +1,12 @@
+# Keep the default ArkTS obfuscation behavior.
+
+# Web calls these public methods by string name, outside the ArkTS graph.
+-keep-property-name
+isAvailable
+importLatestWeight
+readLatestWeightIfAuthorized
+importWeightHistory
+copyJson
+exportJsonFile
+importJsonFile
+setColor

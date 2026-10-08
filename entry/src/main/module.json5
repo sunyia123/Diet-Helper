@@ -1,0 +1,46 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": ["phone"],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "metadata": [
+      {
+        "name": "client_id",
+        "value": "6917614859169546096"
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "DailyNutritionFormAbility",
+        "srcEntry": "./ets/formability/DailyNutritionFormAbility.ets",
+        "label": "$string:DailyNutritionCard_display_name",
+        "description": "$string:DailyNutritionCard_desc",
+        "type": "form",
+        "metadata": [{ "name": "ohos.extension.form", "resource": "$profile:form_config" }]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon_foreground",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "actions": ["ohos.want.action.home"],
+            "entities": ["entity.system.home"]
+          }
+        ]
+      }
+    ]
+  }
+}

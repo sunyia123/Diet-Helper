@@ -1,0 +1,55 @@
+/* Bounded logical-pixel sizing: never scale the whole app by physical pixels.
+   User-spacing is the first layer, so saved per-component overrides still win. */
+@layer screens {
+  :root {
+    --layout-width: min(100vw, 430px);
+    --text-body: clamp(15px, calc(12px + var(--layout-width) * .0093), 16px);
+    --text-title: clamp(19px, calc(16px + var(--layout-width) * .0093), 20px);
+    --text-heading: clamp(17px, calc(14px + var(--layout-width) * .0093), 18px);
+    --text-label: clamp(13px, calc(10px + var(--layout-width) * .0093), 14px);
+    --text-meta: 12px;
+    --space-2: clamp(6px, 1svh, 8px);
+    --space-3: clamp(8px, 1.45svh, 12px);
+    --space-4: clamp(12px, 2svh, 16px);
+    --space-6: clamp(16px, 3svh, 24px);
+    --page-gutter: clamp(10px, calc(var(--layout-width) * .03), 14px);
+  }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  .today-page { grid-template-rows: auto auto; gap: var(--space-2); padding-top: 0; padding-inline: var(--page-gutter); }
+  .page-content { padding: var(--space-3) var(--page-gutter) var(--space-6); }
+  .editor-page #sheet-content, .meal-set-page-content { padding: var(--space-3) var(--page-gutter) max(24px, var(--page-safe-bottom)); }
+  .editor-page-header, .sub-page-header { padding: var(--space-2) var(--page-gutter); min-height: 56px; }
+  .editor-page-header h2, .sub-page-header strong { font-size: var(--text-title); }
+  .section-heading h2, .content-heading h2, .settings-heading h2, .meal-section .section-heading h2 { font-size: var(--text-heading); }
+  .meal-copy > strong, .library-food-copy > strong, .library-food-copy > button, .set-page-card .set-copy strong, .setting-row strong { font-size: var(--text-body); }
+  .meal-food-text, .text-button, .shopping-copy strong, .setting-row .row-value, .purchase-line strong { font-size: var(--text-label); }
+  .meal-row-content { padding-block: var(--space-3); }
+  .trend-card, .shopping-card, .meal-plan-card { padding: var(--space-3); }
+  .trend-card + .trend-card { margin-top: var(--space-3); }
+  .settings-content { padding-top: 4px; }
+  .settings-content > .settings-card { padding: 0; margin: 0 0 var(--space-2); }
+  [data-page="foods"] > .page-content { padding-top: 4px; }
+  [data-page="foods"] .food-library-tabs { margin-block: 0 6px; }
+  [data-page="foods"] .food-library-heading { min-height: 44px; margin-block: 2px; }
+  .setting-row { padding-block: var(--space-3); }
+  .library-food-row, .shopping-item { padding-block: var(--space-2); }
+  .editor-page .form-field { margin-bottom: var(--space-3); }
+  .editor-page .primary-action { margin-top: var(--space-4); }
+  .editor-page .form-field input:not([type="range"]), .editor-page .form-field select { font-size: 16px; }
+
+  /* Date and arrows share one 44px header, inside the sticky goal card.
+     Keep the existing date/summary paths stable for saved spacing overrides. */
+  .today-page > .summary-card { top: 0; margin-top: 0; padding: 4px var(--space-2) var(--space-3); }
+  .summary-card .summary-date-button { position: relative; z-index: 3; width: calc(100% - 88px); margin: 0 44px var(--space-2); min-height: 44px; height: 44px; font-size: var(--text-label); }
+  .summary-card > .date-row { position: absolute; z-index: 3; top: 4px; left: var(--space-2); right: var(--space-2); height: 44px; min-height: 44px; margin: 0; padding: 0; pointer-events: none; }
+  .summary-card .date-row .bare-icon { width: 44px; height: 44px; min-height: 44px; flex-shrink: 0; pointer-events: auto; background: transparent; }
+  .summary-card .summary-title-block h1 { font-size: var(--text-heading); }
+  .summary-card .macro-stack { gap: var(--space-2); }
+  @media (max-width: 600px) {
+    :root { --layout-width: min(100vw, 480px); }
+    .app-shell { width: 100vw; height: 100dvh; box-shadow: none; }
+  }
+  @media (max-height: 660px) {
+    .today-page > .summary-card { position: relative; top: auto; }
+  }
+}

@@ -1,0 +1,34 @@
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 */
+:root {
+  --color-paper: oklch(97% 0.008 110);
+  --color-surface: oklch(99% 0.005 110);
+  --color-surface-soft: oklch(94% 0.014 127);
+  --color-ink: oklch(25% 0.025 151);
+  --color-muted: oklch(46% 0.018 150);
+  --color-rule: oklch(85% 0.014 145);
+  --color-accent: oklch(43% 0.091 153);
+  --color-accent-ink: oklch(99% 0.005 110);
+  --color-focus: oklch(48% 0.13 155);
+  --color-image-line: oklch(20% 0.006 150 / 0.1);
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --text-small: 0.875rem;
+  --text-base: 1rem;
+  --text-lede: 1.125rem;
+  --text-heading: clamp(1.5rem, 2.7vw, 2.5rem);
+  --text-display: clamp(2.25rem, 5vw, 4.5rem);
+  --radius-control: 0.875rem;
+  --radius-image: 1rem;
+  --rule-thin: 1px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+}

@@ -1,0 +1,9 @@
+{
+  "name": "entry",
+  "version": "2.1.0",
+  "description": "食由己 HarmonyOS 手机应用入口模块。",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {}
+}

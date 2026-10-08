@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-08",
+  "framework": "vanilla HTML/CSS/JavaScript and HarmonyOS ArkTS WebView",
+  "source": "design-demo/calm-path-v1/tokens.css and source project design.md",
+  "palette": "existing cream and pine-green palette",
+  "font": "existing system UI font stack for Chinese text",
+  "spacing": "existing 4/8/12/16/24 px scale",
+  "motion": "existing CSS-only short transitions",
+  "preserved": ["brand palette", "Chinese UI typography", "product screenshots"]
+}

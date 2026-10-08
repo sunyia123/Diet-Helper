@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fafbf6">
+  <title>食由己</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <style>@layer user-spacing, user-legacy-spacing, default-spacing, default-legacy-spacing, tokens, base, editors, pixel, ledger, screens;</style>
+  <link rel="stylesheet" href="tokens.css?v=20260919-day-labels">
+  <link rel="stylesheet" href="styles.css?v=20260928-native-safe-r2">
+  <link rel="stylesheet" href="web-editors.css?v=20260928-native-safe">
+  <link rel="stylesheet" href="design-system.css?v=20260928-native-safe">
+  <link rel="stylesheet" href="pixel-art.css?v=20260928-native-safe">
+  <link rel="stylesheet" href="shopping-ledger.css?v=20260924-purchase-channels">
+  <link rel="stylesheet" href="web-layout.css?v=20260928-native-safe-r2">
+  <link rel="stylesheet" href="web-experience.css?v=20260928-native-safe">
+  <link rel="stylesheet" href="responsive-layout.css?v=20260928-native-safe">
+  <link rel="stylesheet" href="weight-conversion.css?v=20260924-stage-unify">
+</head>
+<body>
+  <div class="ambient-path" aria-hidden="true"></div>
+
+  <main class="app-shell" aria-label="饮食记录应用">
+    <div class="page-stack">
+      <section class="app-page today-page active" data-page="today" aria-label="今天">
+        <section class="summary-card" aria-labelledby="summary-title">
+          <button class="summary-card-action" id="summary-target-button" type="button" aria-label="编辑当日营养目标"></button>
+          <button class="summary-date-button" id="date-button" type="button" aria-label="选择日期"><span id="current-weekday">周四 8月27日</span></button>
+          <div class="summary-layout">
+            <div class="summary-title-block">
+              <h1 id="summary-title">营养目标</h1>
+              <span id="today-program-phase" hidden></span>
+              <div class="summary-day-toggle" role="group" aria-label="临时切换当日类型">
+                <button class="active" type="button" data-summary-day="training" aria-pressed="true">训练</button>
+                <button type="button" data-summary-day="rest" aria-pressed="false">休息</button>
+              </div>
+            </div>
+            <div class="macro-stack" aria-label="三大营养素进度">
+              <article class="macro-item carbs">
+                <div class="macro-label"><span>碳水</span><b id="carbs-text">98 / 146g</b></div>
+                <div class="track"><i id="carbs-bar"></i><span class="overflow-layer" id="carbs-overflow" hidden></span></div>
+              </article>
+              <article class="macro-item protein">
+                <div class="macro-label"><span>蛋白质</span><b id="protein-text">71 / 92g</b></div>
+                <div class="track"><i id="protein-bar"></i><span class="overflow-layer" id="protein-overflow" hidden></span></div>
+              </article>
+              <article class="macro-item fat">
+                <div class="macro-label"><span>脂肪</span><b id="fat-text">18 / 50g</b></div>
+                <div class="track"><i id="fat-bar"></i><span class="overflow-layer" id="fat-overflow" hidden></span></div>
+              </article>
+            </div>
+            <div class="summary-energy-column"><div class="energy-ring" id="energy-ring" role="img" aria-label="热量完成进度">
+              <svg viewBox="0 0 82 82" aria-hidden="true">
+                <defs><pattern id="energy-overflow-stripes" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)"><path class="energy-overflow-stripe" d="M0 0V4"/></pattern></defs>
+                <circle class="energy-ring-track" cx="41" cy="41" r="34" pathLength="100"></circle>
+                <circle class="energy-ring-value" cx="41" cy="41" r="34" pathLength="100"></circle>
+                <circle class="energy-ring-overflow" cx="41" cy="41" r="34" pathLength="100"></circle>
+                <circle class="energy-ring-overflow energy-ring-hatching" cx="41" cy="41" r="34" pathLength="100"></circle>
+              </svg>
+              <div><strong id="current-calories">375</strong><span id="target-calories-display">/ 1400</span></div>
+            </div><button class="summary-consumption" id="summary-consumption" type="button" aria-label="查看当日饮食花费" hidden>￥0.0</button></div>
+          </div>
+          <div class="date-row" aria-label="逐日切换">
+            <button class="bare-icon" id="previous-day" type="button" aria-label="前一天">‹</button>
+            <button class="bare-icon" id="next-day" type="button" aria-label="后一天">›</button>
+          </div>
+        </section>
+
+        <section class="meal-section" aria-labelledby="meal-title">
+          <div class="section-heading">
+            <div><p class="section-kicker">DAY PATH</p><h2 id="meal-title">今日餐次</h2></div>
+            <button class="diet-review-banner" id="diet-review-banner" type="button" aria-label="复盘调整" hidden></button>
+            <div class="section-actions">
+              <button class="text-button" id="daily-share-open" type="button" aria-label="生成当日打卡分享"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M6 11H4v10h16V11h-2"/></svg></button>
+              <button class="text-button" id="manual-weight-button" type="button">记录体重</button>
+              <button class="text-button" id="quick-add-button" type="button">快速记录</button>
+            </div>
+          </div>
+          <div id="meal-training-mark" hidden><span>餐次标注</span></div>
+          <ol class="meal-path" id="meal-list"></ol>
+        </section>
+      </section>
+
+      <section class="app-page scroll-page" data-page="foods" aria-label="食物库" hidden>
+        <div class="page-content">
+          <div class="food-library-tabs" role="tablist" aria-label="食物库内容"><button type="button" role="tab" data-library-view="ingredients" aria-selected="true" class="active">食材</button><button type="button" role="tab" data-library-view="dishes" aria-selected="false">菜肴</button></div>
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+            <input id="food-search" type="search" placeholder="输入食物名称或拼音" autocomplete="off">
+            <span id="food-count" aria-live="polite">0 种</span>
+            <button class="search-clear" id="food-search-clear" type="button" aria-label="清空搜索">×</button>
+          </label>
+
+          <div class="food-library-heading">
+            <div class="category-row" aria-label="食物分类">
+              <button class="category-chip" type="button" data-category="protein" aria-pressed="false">蛋白质</button>
+              <button class="category-chip" type="button" data-category="carbs" aria-pressed="false">碳水</button>
+              <button class="category-chip" type="button" data-category="fiber" aria-pressed="false">膳食纤维</button>
+              <button class="category-chip" type="button" data-category="fat" aria-pressed="false">脂肪</button>
+              <button class="category-chip" type="button" data-category="other" aria-pressed="false">其他</button>
+            </div>
+          </div>
+          <div class="food-create-actions"><button class="secondary-action" id="create-library-food" type="button">＋ 添加食物</button><button class="secondary-action" id="create-library-dish" type="button">＋ 创建菜肴</button><button class="secondary-action" id="open-purchase-overview" type="button">采购总览 ›</button></div>
+          <div class="library-list" id="food-library" role="region" aria-label="食物列表" tabindex="0"></div>
+        </div>
+      </section>
+
+      <section class="app-page scroll-page" data-page="prep" aria-label="备餐" hidden>
+        <div class="page-content prep-content">
+          <section class="prep-hero">
+            <div class="prep-hero-heading">
+              <div class="prep-week"><span>本周期</span><strong>08.27 — 09.02</strong></div>
+              <button class="week-button" id="manage-sets" type="button">套餐设置</button>
+            </div>
+            <div class="prep-summary" id="prep-summary"></div>
+          </section>
+
+          <section class="prep-card week-plan-card" id="week-plan-card">
+            <button class="week-plan-heading" id="week-plan-toggle" type="button" aria-expanded="false">
+              <h2>周期安排</h2><span id="week-plan-summary-line"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>
+            </button>
+            <div class="week-plan" id="week-plan" hidden></div>
+          </section>
+
+          <section class="prep-card">
+            <div class="content-heading shopping-heading"><h2>备餐清单</h2><span id="shopping-progress">0 / 0</span></div>
+            <div class="shopping-list" id="shopping-list"></div>
+            <button class="secondary-action" id="complete-shopping" type="button">标记全部已备好</button>
+          </section>
+
+        </div>
+      </section>
+
+      <section class="app-page scroll-page" data-page="insights" aria-label="趋势" hidden>
+        <div class="page-content trend-content">
+          <div class="trend-toolbar">
+            <button class="trend-weight-button" id="trend-weight-button" type="button" aria-label="手动记录体重">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <span>记录体重</span>
+            </button>
+            <div class="trend-view-switch" role="tablist" aria-label="趋势视图">
+              <button class="active" type="button" role="tab" data-trend-view="statistics" aria-selected="true">统计</button>
+              <button type="button" role="tab" data-trend-view="calendar" aria-selected="false">日历</button>
+            </div>
+          </div>
+
+          <div id="trend-statistics">
+            <section class="trend-card average-card" aria-labelledby="average-title">
+              <div class="content-heading trend-period-heading">
+                <h2 id="average-title">均值<small>（每日）</small></h2>
+                <div class="trend-period-tools">
+                  <span id="trend-period-label">8月21–27日</span>
+                  <select id="trend-period-select" aria-label="趋势周期"><option value="week">近一周</option><option value="month">近一个月</option><option value="halfyear">近半年</option></select>
+                </div>
+              </div>
+              <div class="average-grid">
+                <div class="calories"><strong id="average-calories">0</strong><span>热量<small>kcal</small></span></div>
+                <div class="carbs"><strong id="average-carbs">0</strong><span>碳水<small>g</small></span></div>
+                <div class="protein"><strong id="average-protein">0</strong><span>蛋白<small>g</small></span></div>
+                <div class="fat"><strong id="average-fat">0</strong><span>脂肪<small>g</small></span></div>
+              </div>
+            </section>
+
+            <section class="trend-card chart-card" aria-labelledby="calorie-chart-title">
+              <div class="content-heading"><h2 id="calorie-chart-title">卡路里</h2><span>单位：kcal</span></div>
+              <div class="calorie-chart" id="calorie-chart" role="img" aria-label="每日卡路里柱状图"></div>
+              <div class="chart-tooltip" id="calorie-tooltip" hidden></div>
+            </section>
+
+            <section class="trend-card chart-card" aria-labelledby="macro-chart-title">
+              <div class="content-heading"><h2 id="macro-chart-title">营养素</h2><span>单位：g</span></div>
+              <div class="macro-legend" aria-label="图例"><span class="carbs">碳水</span><span class="protein">蛋白质</span><span class="fat">脂肪</span></div>
+              <div class="macro-chart" id="macro-chart" role="img" aria-label="每日三大营养素柱状图"></div>
+              <div class="chart-tooltip" id="macro-tooltip" hidden></div>
+            </section>
+
+            <section class="trend-card chart-card consumption-card" aria-labelledby="consumption-chart-title">
+              <div class="content-heading"><h2 id="consumption-chart-title">饮食花费</h2><span id="consumption-chart-unit">单位：元</span></div>
+              <div class="consumption-legend" id="consumption-legend"></div>
+              <div class="consumption-chart reference-chart" id="consumption-chart" aria-label="按碳水蛋白质脂肪分摊的饮食花费堆叠柱状图"></div>
+              <div class="chart-tooltip" id="consumption-tooltip" hidden></div>
+            </section>
+
+            <section class="trend-card weight-card" aria-labelledby="weight-title">
+              <div class="trend-card-heading">
+                <div><span>平均体重</span><strong id="average-weight">—</strong></div>
+                <em id="weight-change">暂无记录</em>
+              </div>
+              <svg class="line-chart" id="weight-chart" viewBox="0 0 330 128" role="img" aria-labelledby="weight-title"><title id="weight-title">体重变化趋势</title></svg>
+              <div class="chart-labels" id="weight-chart-labels"></div>
+            </section>
+          </div>
+
+          <div id="trend-calendar" hidden>
+            <section class="trend-card calendar-card" aria-labelledby="calendar-title">
+              <div class="calendar-heading">
+                <button type="button" data-calendar-shift="-1" aria-label="上个月">‹</button>
+                <button type="button" id="calendar-month-open" aria-label="选择日历年月" aria-haspopup="dialog"><span id="calendar-title">2026年8月</span><span aria-hidden="true">⌄</span></button>
+                <button type="button" data-calendar-shift="1" aria-label="下个月">›</button>
+              </div>
+              <div class="calendar-weekdays" aria-hidden="true"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+              <div class="calendar-legend"><span class="calories">卡</span><span class="carbs">碳</span><span class="protein">蛋</span><span class="fat">脂</span></div>
+              <div class="nutrition-calendar" id="nutrition-calendar"></div>
+              <div class="calendar-day-detail" id="calendar-day-detail">点击日期查看当日营养</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-page scroll-page" data-page="profile" aria-label="设置" hidden>
+        <div class="page-content settings-content">
+          <section class="settings-card settings-collapsible" data-settings-section="method">
+            <div class="settings-heading">
+              <span class="settings-number">01</span><div class="settings-heading-copy"><h2>饮食方法</h2></div><button class="settings-collapse-toggle" type="button" data-settings-collapse="method" aria-expanded="true" aria-label="收起饮食方法"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></button>
+            </div>
+            <div class="settings-section-body" data-settings-body="method">
+              <button class="setting-row method-row" id="method-button" type="button">
+                <span><small>当前方法</small><strong id="method-name">热量缺口法</strong></span>
+                <span class="row-value">更换 <b>›</b></span>
+              </button>
+              <div class="method-day-targets" id="method-day-targets"></div>
+              <p class="method-range-note" id="method-range-note" hidden></p>
+            </div>
+          </section>
+
+          <section class="settings-card settings-collapsible" data-settings-section="schedule">
+            <div class="settings-heading">
+              <span class="settings-number">02</span><div class="settings-heading-copy"><h2>周期安排</h2></div><button class="settings-collapse-toggle" type="button" data-settings-collapse="schedule" aria-expanded="true" aria-label="收起周期安排"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></button>
+            </div>
+            <div class="settings-section-body" data-settings-body="schedule">
+              <button class="setting-row method-row" id="weekly-plan-button" type="button">
+                <span><strong id="weekly-plan-summary">训练3天 · 休息4天</strong></span>
+                <span class="row-value">安排 <b>›</b></span>
+              </button>
+            </div>
+          </section>
+
+          <section class="settings-card settings-collapsible compact-settings" data-settings-section="basic">
+            <div class="settings-heading"><span class="settings-number">03</span><div class="settings-heading-copy"><h2>基础设置</h2></div><button class="settings-collapse-toggle" type="button" data-settings-collapse="basic" aria-expanded="true" aria-label="收起基础设置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></button></div>
+            <div class="settings-section-body" data-settings-body="basic">
+            <button class="setting-row" id="body-settings-button" type="button"><span><small>身体参数</small><strong id="body-profile-summary">70.8 kg · 减脂</strong></span><span class="row-value">编辑 <b>›</b></span></button>
+            <button class="setting-row" id="meal-settings-button" type="button"><span><small>餐次设置</small><strong id="meal-settings-summary">训练 4 餐 · 休息 3 餐</strong></span><span class="row-value">编辑 <b>›</b></span></button>
+            <button class="setting-row" id="review-settings-button" type="button"><span><small>复盘提醒</small><strong id="review-settings-summary">为当前方法单独设置</strong></span><span class="row-value">设置 <b>›</b></span></button>
+            <button class="setting-row" id="default-sets-button" type="button"><span><small>默认套餐</small><strong id="default-sets-summary">4 个餐次套餐 · 同步备餐</strong></span><span class="row-value">管理 <b>›</b></span></button>
+            <button class="setting-row" id="optional-settings-open" type="button"><span><strong>可选功能</strong></span><span class="row-value">设置 <b>›</b></span></button>
+            <button class="setting-row" id="tutorial-button" type="button"><span><small>使用引导</small><strong>重新查看核心功能</strong></span><span class="row-value">开始 <b>›</b></span></button>
+            <button class="setting-row" id="data-settings-button" type="button"><span><small>数据与备份</small><strong>仅保存在本机</strong></span><span class="row-value">管理 <b>›</b></span></button>
+            </div>
+          </section>
+
+          <p class="version-note">版本 2.4 · 食物图标 <a href="https://github.com/jdecked/twemoji" target="_blank" rel="noreferrer">Twemoji</a>，Twitter 及其他贡献者（CC BY 4.0）</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="meal-set-page" id="meal-set-page" aria-label="套餐管理" hidden>
+      <header class="sub-page-header">
+        <button class="sub-page-back" id="meal-set-page-back" type="button" aria-label="返回">‹</button>
+        <div><small id="meal-set-page-kicker">MEAL SETS</small><strong id="meal-set-page-title">套餐管理</strong></div>
+        <button class="sub-page-add" id="add-meal-set" type="button">编辑套餐</button>
+      </header>
+      <div class="meal-set-page-content" id="meal-set-page-content"></div>
+    </section>
+
+    <section class="optional-settings-page" id="optional-settings-page" aria-label="可选功能" hidden>
+      <header class="sub-page-header">
+        <button class="sub-page-back" id="optional-settings-back" type="button" aria-label="返回设置">‹</button>
+        <strong>可选功能</strong>
+      </header>
+      <div class="optional-settings-content">
+        <button class="setting-row" id="theme-settings-button" type="button"><span><strong>界面样式</strong></span><span class="row-value">›</span></button>
+        <label class="setting-row ledger-setting"><span><strong>记账功能</strong></span><input id="ledger-enabled" type="checkbox" role="switch" aria-label="记账功能" checked></label>
+        <button class="setting-row" id="layout-tuner-open" type="button"><span><strong>网页实时边距编辑</strong></span><span class="row-value">›</span></button>
+        <label class="setting-row weight-unit-setting"><span><strong>全局显示体重单位</strong></span><select id="weight-unit-select" aria-label="全局显示体重单位"><option value="kg">kg</option><option value="jin">斤</option></select></label>
+      </div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="主要导航">
+      <button class="nav-item active" type="button" data-nav="today"><svg class="nav-icon-outline" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20H4z"/><path d="M9 20v-6h6v6"/></svg><svg class="nav-icon-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z"/></svg><span>今天</span></button>
+      <button class="nav-item" type="button" data-nav="foods"><svg class="nav-icon-outline" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><svg class="nav-icon-solid" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path class="nav-solid-detail" d="M8 8h8M8 12h8M8 16h5"/></svg><span>食物</span></button>
+      <button class="nav-item" type="button" data-nav="prep"><svg class="nav-icon-outline" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14v11H5z"/><path d="M8 8V5h8v3M5 13h14"/></svg><svg class="nav-icon-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8a2 2 0 0 1 2 2v1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a2 2 0 0 1 2-2Zm1 3h6V6H9Z"/><path class="nav-solid-detail" d="M4 13h16"/></svg><span>备餐</span></button>
+      <button class="nav-item" type="button" data-nav="insights"><svg class="nav-icon-outline" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9M12 19V5M19 19v-7"/></svg><svg class="nav-icon-solid" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="2"/><rect x="10" y="3" width="4" height="18" rx="2"/><rect x="17" y="12" width="4" height="9" rx="2"/></svg><span>趋势</span></button>
+      <button class="nav-item" type="button" data-nav="profile"><svg class="nav-icon-outline" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 20c.7-4 3-6 7-6s6.3 2 7 6"/></svg><svg class="nav-icon-solid" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M3.5 21c.5-5.1 3.4-8 8.5-8s8 2.9 8.5 8Z"/></svg><span>设置</span></button>
+    </nav>
+    <div class="motion-layer" id="motion-layer" aria-hidden="true"></div>
+  </main>
+
+  <section class="onboarding" id="onboarding" aria-label="首次使用配置" hidden>
+    <div class="onboarding-panel">
+      <div class="onboarding-progress" id="onboarding-progress" aria-label="配置进度"></div>
+      <div class="onboarding-content" id="onboarding-content"></div>
+    </div>
+  </section>
+
+  <div class="feature-tour" id="feature-tour" aria-live="polite" hidden>
+    <div class="tour-spotlight" id="tour-spotlight" aria-hidden="true"></div>
+    <article class="tour-card" id="tour-card">
+      <span id="tour-step-label">1 / 8</span>
+      <h2 id="tour-title"></h2>
+      <p id="tour-copy"></p>
+      <div class="tour-actions">
+        <button id="tour-skip" type="button">跳过</button>
+        <button id="tour-next" type="button">下一步</button>
+      </div>
+    </article>
+  </div>
+
+  <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+  <section class="editor-page" id="bottom-sheet" aria-hidden="true" aria-labelledby="sheet-title" hidden>
+    <header class="sheet-header editor-page-header">
+      <button class="sub-page-back" id="close-sheet" type="button" aria-label="返回上一页">‹</button>
+      <div><p class="sheet-kicker" id="sheet-kicker">QUICK LOG</p><h2 id="sheet-title">记录食物</h2></div>
+      <button id="pixel-header-save" type="button" hidden>保存</button>
+    </header>
+    <div id="sheet-content"></div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input class="native-file-input" id="meal-camera-input" type="file" accept="image/*" capture="environment" tabindex="-1" aria-hidden="true">
+  <input class="native-file-input" id="meal-gallery-input" type="file" accept="image/*" tabindex="-1" aria-hidden="true">
+  <input class="native-file-input" id="food-icon-input" type="file" accept="image/*" tabindex="-1" aria-hidden="true">
+  <script src="food-data.js"></script>
+  <script src="food-icons.js"></script>
+  <script src="pixel-art.js"></script>
+  <script src="pixel-icon-catalog.js"></script>
+  <script src="pixel-ui-art.js"></script>
+  <script src="pixel-icons.js?v=20260921-library-scroll"></script>
+  <script src="food-catalog.js"></script>
+  <script src="food-pinyin.js"></script>
+  <script src="catalog-migration.js"></script>
+  <script src="food-imports.js?v=20260924-food-stage"></script>
+  <script src="unsaved-edits.js?v=20260914-ui"></script>
+  <script src="web-editors.js?v=20260928-optional-settings"></script>
+  <script src="diet-programs.js?v=20260928-activity-copy"></script>
+  <script src="weight-conversion.js?v=20260924-stage-motion-macros"></script>
+  <script src="shopping-ledger.js?v=20260924-purchase-channels"></script>
+  <script src="shopping-imports.js?v=20260924-purchase-channels"></script>
+  <script src="ui-icons.js"></script>
+  <script src="layout-defaults.js?v=20260922-ledger-shared"></script>
+  <script src="daily-tools.js?v=20260924-stage-motion-macros"></script>
+  <script src="layout-editor.js?v=20260928-optional-settings"></script>
+  <script src="calendar-tools.js?v=20260920-layout"></script>
+  <script src="web-refinements.js?v=20260928-optional-settings"></script>
+  <script src="web-experience.js?v=20260928-optional-settings"></script>
+  <script src="app.js?v=20260928-widget-navigation"></script>
+</body>
+</html>
