@@ -1,67 +1,125 @@
-# 食由己 · WebView 版本留档
+<div align="center">
 
-食由己是面向 HarmonyOS 手机的本地优先饮食管理应用。本仓库保存 **2.4 版 HTML／CSS／JavaScript 工作台及 ArkTS WebView 容器**，作为产品设计、交互实现与原生 ArkUI 迁移前的可复现留档。当前原生重构继续在原项目 `Diet-Helper` 中进行；这里不再作为新功能主线。
+# 食由己 · Diet Helper
 
-[查看产品展示页](./index.html) · [打开 Web 演示](./design-demo/calm-path-v1/index.html)
+**从记录一餐，到安排下一餐。**
 
-## 产品能做什么
+面向 HarmonyOS 的本地优先饮食管理应用，将营养记录、食物管理、周期备餐、采购成本和体重趋势放在一起。
 
-| 场景 | 实现内容 |
+**无需账号 · 本地存储 · Web 可运行 · MIT License**
+
+[功能介绍](#功能介绍) · [界面展示](#界面展示) · [快速开始](#快速开始) · [参与贡献](#参与贡献)
+
+</div>
+
+## 为什么做食由己
+
+饮食管理既有「今天吃了多少」，也有「明天怎么备餐、食材买多少、这一餐花了多少」。食由己把这些日常问题连接起来：设置目标、按餐记录、复用菜肴和套餐、汇总备餐原料，再通过趋势调整自己的节奏。
+
+- **记录贴近真实吃法**：食材与菜肴都能记入餐食，支持生熟重量和可食重量换算。
+- **计划落实到采购**：周期套餐生成备餐清单，采购记录为食材成本和渠道比价提供依据。
+- **数据由自己管理**：核心记录无需账号或云端服务，支持本地备份与恢复。
+
+## 功能介绍
+
+| 功能 | 可以做什么 |
 | --- | --- |
-| 今日记录 | 训练／休息日目标、按餐记录与打卡、食物快加、拍照、每日分享 |
-| 食物与菜肴 | 食材库、拼音搜索、生熟与可食重量换算、菜肴配方与辅料 |
-| 备餐 | 周期套餐、原料采购量、食材成本估算、勾选备餐清单 |
-| 趋势与复盘 | 热量及三大营养素趋势、月历、体重记录、目标调整 |
-| 采购记账 | 单笔采购、渠道、历史均价和单次／渠道比价 |
-| 个性化 | 饮食方法、训练／休息日目标、四套主题、可选功能与体重单位 |
-
-数据默认保存在设备本地，不依赖账号或云端服务。网页运行时的浏览器数据和 HarmonyOS WebView 中的设备数据互不自动同步。截图使用演示记录，不包含真实用户账目或照片。
+| 今日饮食 | 切换训练日／休息日目标，按餐记录和打卡，快加食物，附餐食照片，生成每日分享 |
+| 食物与菜肴 | 按名称或拼音查找食材，管理收藏、菜肴配方与辅料，换算生熟及可食重量 |
+| 周期备餐 | 复用套餐、汇总原材料用量、估算费用，逐项勾选备餐清单 |
+| 趋势与月历 | 查看热量、碳水、蛋白质、脂肪和饮食花费趋势，按月回看每日记录 |
+| 目标与体重 | 使用热量缺口法或自定义目标，分别设置训练／休息日营养比例，记录体重并复盘 |
+| 采购与比价 | 记录采购渠道、重量和实付，对比历史均价、渠道均价与单次采购价格 |
+| 个性化与备份 | 选择四套主题、可选功能和体重单位，通过数据管理备份、恢复本地记录 |
 
 ## 界面展示
 
-本仓库的 [`showcase/screenshots`](./showcase/screenshots) 保存七张从 2.4 页面在隔离浏览器中渲染的功能截图：今日、食物、备餐、趋势、日历、热量缺口法、采购。它们是产品展示素材，**不是鸿蒙真机截屏**。展示页直接使用这些截图，不重绘手机系统边框。
+### 记录、选食物、做备餐
 
-## 运行 Web 演示
+<table>
+  <tr>
+    <th width="33%">今日饮食</th>
+    <th width="33%">食物与菜肴</th>
+    <th width="33%">周期备餐</th>
+  </tr>
+  <tr>
+    <td><img src="showcase/screenshots/01-today-1080x1920.png" width="260" alt="今日页：营养目标、训练日选择和按餐记录"></td>
+    <td><img src="showcase/screenshots/02-foods-1080x1920.png" width="260" alt="食物库：搜索、分类和生熟重量切换"></td>
+    <td><img src="showcase/screenshots/03-prep-1080x1920.png" width="260" alt="备餐清单：周期原料、计划用量和费用估算"></td>
+  </tr>
+</table>
 
-在仓库根目录运行：
+### 从一天的记录，看一段时间的变化
+
+<table>
+  <tr>
+    <th width="50%">营养与花费趋势</th>
+    <th width="50%">饮食月历</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="showcase/screenshots/04-insights-1080x1920.png" width="300" alt="趋势页：热量、营养素和饮食花费随时间的变化"></td>
+    <td align="center"><img src="showcase/screenshots/05-calendar-1080x1920.png" width="300" alt="月历页：按日期回看每日营养记录"></td>
+  </tr>
+</table>
+
+### 让目标和花费都有依据
+
+<table>
+  <tr>
+    <th width="50%">热量缺口与分日目标</th>
+    <th width="50%">采购记录与比价</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="showcase/screenshots/06-deficit-1080x1920.png" width="300" alt="目标设置：训练日和休息日的热量及营养比例"></td>
+    <td align="center"><img src="showcase/screenshots/07-purchase-1080x1920.png" width="300" alt="采购页：食物采购明细、历史均价和渠道比价"></td>
+  </tr>
+</table>
+
+## 快速开始
+
+### 在浏览器中运行
+
+准备 Git 和 Python 3，然后执行：
 
 ```bash
-python -m http.server 5178 --directory design-demo/calm-path-v1
+git clone https://github.com/sunyia123/Diet-Helper.git
+cd Diet-Helper
+python -m http.server 5178 --bind 127.0.0.1
 ```
 
-浏览器打开 `http://127.0.0.1:5178/`。建议用独立浏览器配置文件试用，避免把演示记录与日常浏览数据混在一起。页面为纯前端；饮食记录主要存于 `localStorage`，餐食照片存于 `IndexedDB`，关闭服务后浏览器数据仍由该浏览器配置文件管理。
+- 产品介绍：<http://127.0.0.1:5178/>
+- 交互工作台：<http://127.0.0.1:5178/design-demo/calm-path-v1/>
 
-## HarmonyOS 工程
+Web 部分使用原生 HTML、CSS 和 JavaScript，无需安装 npm 依赖或启动后端。日常记录主要保存在当前浏览器的 `localStorage`，餐食照片保存在 `IndexedDB`；数据管理入口位于「设置 → 数据与备份」。
 
-使用 DevEco Studio 打开仓库根目录。`entry/src/main/ets/pages/Index.ets` 是 WebView 容器，加载 `entry/src/main/resources/rawfile/calm-path-v1/index.html`；`entry/src/main/ets/services/` 提供系统避让区、数据传输、体重及桌面卡片等桥接能力。`design-demo/calm-path-v1/` 是对应的 Web 开发主源。
+### 在 HarmonyOS 中运行
 
-本留档仓库只保留不含密钥的 `build-profile.json5`。若要在自己的设备上构建和安装，需在 DevEco Studio 中配置自己的签名材料；本仓库不包含原项目私钥、签名证书、真实用户备份或发行包。应用包名及 App ID 属于历史工程元数据，实际分发须使用自己的应用身份。
+使用 DevEco Studio 打开仓库根目录，安装工程所需 SDK，配置自己的应用签名后构建 `entry` 模块。
+
+应用通过 ArkTS WebView 加载包内页面，桥接系统避让区、数据传输、体重接口和桌面营养卡片。浏览器工作台与设备端各自保存数据，不会自动同步；系统桥接能力需在 HarmonyOS 环境使用。分发自己的构建时，请配置自己的包名、App ID 和签名材料。
+
+## 项目结构
 
 ```text
-AppScope/                         HarmonyOS 应用资源
-design-demo/calm-path-v1/         Web 主源，可直接在浏览器运行
-entry/src/main/ets/pages/Index.ets
-entry/src/main/ets/services/      Web ↔ 原生桥接
-entry/src/main/resources/rawfile/ 包内 Web 副本
-showcase/screenshots/             2.4 功能演示截图
-index.html                        产品展示页
+AppScope/                          HarmonyOS 应用配置与资源
+design-demo/calm-path-v1/          Web 开发主源
+entry/src/main/ets/pages/Index.ets WebView 入口
+entry/src/main/ets/services/       Web 与 HarmonyOS 的桥接服务
+entry/src/main/resources/rawfile/  应用包内的 Web 资源
+showcase/screenshots/              七张产品界面截图
+index.html                        产品介绍页
+showcase.css                      产品介绍页样式
+tokens.css                        产品介绍页设计变量
 ```
 
-## 技术与设计选择
+开发 Web 交互时，从 `design-demo/calm-path-v1/` 开始；打包 HarmonyOS 应用时，需将对应 Web 资源同步到 `entry/src/main/resources/rawfile/calm-path-v1/`。营养记录使用独立快照，避免编辑食物资料时改写过去的餐食记录。
 
-- 前端采用原生 HTML、CSS、JavaScript；不依赖远端 API 才能完成核心记录。
-- HarmonyOS 使用 ArkTS WebView 容器，原生桥处理窗口安全区、体重数据接口、数据传输和桌面营养卡片。
-- 营养快照与食物资料分开保存，尽量让历史记录不因后来编辑食物而被回写。
-- 采用紧凑的手机信息密度、语义化营养颜色和可选主题；页面在逻辑视口中适配，而不是按物理像素等比放大。
+## 参与贡献
 
-本仓库记录的是已实现的 WebView 产品，而不是原生迁移成果。原生 ArkUI／ArkTS 版本会重新梳理数据与交互，不把此处的 HTML 直接嵌入新主界面。
+欢迎通过 [Issues](https://github.com/sunyia123/Diet-Helper/issues) 反馈问题或提出建议，也欢迎提交 Pull Request。
 
-## 第三方素材
+反馈时请附上运行环境、复现步骤、预期行为和实际结果。界面调整请兼顾窄屏体验；涉及食物、菜肴或套餐的数据修改，请保留既有记录和历史营养快照。分享截图或数据样例前，请移除个人信息。
 
-本仓库自有代码采用 [MIT License](./LICENSE)。这项许可不覆盖第三方图标、照片及其他有独立许可的素材。
+## 许可证
 
-食物图标含 OpenMoji、Twemoji 与像素素材。来源、署名和各自许可见 `design-demo/calm-path-v1/assets/food-icons/` 下的说明与许可证。第三方资源不因本仓库后续为自有代码选择的许可而改变授权条件；尤其不要把像素食材包独立拆出再分发。
-
-## 归档状态
-
-留档基于 2026-10-08 本地 2.4 Web 主源与 WebView 工程，未加入正在开发的 `Native*Pilot` 试用页面。展示页和 README 是归档说明，不改变原应用功能。无真机运行验收记录的部分不在本仓库中冒充为真机验证。
+自有代码采用 [MIT License](./LICENSE)。第三方图标与素材遵循各自的许可，来源及署名见 [素材说明](./design-demo/calm-path-v1/assets/food-icons/ATTRIBUTION.md) 和对应目录中的许可证。
